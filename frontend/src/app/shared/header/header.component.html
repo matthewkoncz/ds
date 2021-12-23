@@ -1,0 +1,33 @@
+<header class="c-header">
+  <div class="c-header__logo">
+    <img class="c-header__logo-img" src="assets/images/fox.png" alt="logo" />
+  </div>
+  <!-- desktop -->
+  <ul class="c-header__menu">
+    <ng-template [ngTemplateOutlet]="menuItemsRef"></ng-template>
+  </ul>
+  <!-- mobil -->
+  <div class="c-header__mobile-menu">
+    <div class="c-header__hamburger-menu" (click)="toggleHamburgerMenu()">
+      <span class="c-header__hamburger-menu-line">_</span>
+      <span class="c-header__hamburger-menu-line">_</span>
+      <span class="c-header__hamburger-menu-line">_</span>
+    </div>
+    <div *ngIf="isHamburgerMenuOpen" class="c-header__mobile-menu-slider">
+      <p class="c-header__mobile-menu-close" (click)="toggleHamburgerMenu()">
+        ✖
+      </p>
+      <ng-template [ngTemplateOutlet]="menuItemsRef"> </ng-template>
+    </div>
+  </div>
+</header>
+
+<!-- menu items-->
+<ng-template #menuItemsRef>
+  <li class="c-header__menu-item">
+    <a routerLink="/form" (click)="toggleHamburgerMenu()">SETTINGS</a>
+  </li>
+  <li class="c-header__menu-item">
+    <a routerLink="/details" (click)="toggleHamburgerMenu()">PROFILE</a>
+  </li>
+</ng-template>
