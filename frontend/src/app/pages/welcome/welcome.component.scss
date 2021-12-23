@@ -1,0 +1,18 @@
+.c-welcome {
+  padding-top: 2vh;
+  &__label {
+    font-size: 5vw;
+    text-align: center;
+    line-height: 2.5vh;
+    &--small {
+      font-size: 3vw;
+    }
+  }
+  &__img-container {
+    text-align: center;
+    img {
+      width: 14vw;
+      min-width: 80px;
+    }
+  }
+}

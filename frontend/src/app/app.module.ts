@@ -7,6 +7,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { InformationFormComponent } from './pages/information-form/information-form.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { WelcomeComponent } from './pages/welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     UserProfileComponent,
     InformationFormComponent,
     PageNotFoundComponent,
+    WelcomeComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
