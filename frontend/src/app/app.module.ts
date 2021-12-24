@@ -6,19 +6,20 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { InformationFormComponent } from './pages/information-form/information-form.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { WelcomeComponent } from './pages/welcome/welcome.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     UserProfileComponent,
-    InformationFormComponent
+    InformationFormComponent,
+    PageNotFoundComponent,
+    WelcomeComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

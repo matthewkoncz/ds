@@ -1,6 +1,8 @@
 <header class="c-header">
   <div class="c-header__logo">
-    <img class="c-header__logo-img" src="assets/images/fox.png" alt="logo" />
+    <a routerLink="/"
+      ><img class="c-header__logo-img" src="assets/images/fox.png" alt="logo"
+    /></a>
   </div>
   <!-- desktop -->
   <ul class="c-header__menu">
@@ -25,9 +27,19 @@
 <!-- menu items-->
 <ng-template #menuItemsRef>
   <li class="c-header__menu-item">
-    <a routerLink="/form" (click)="toggleHamburgerMenu()">SETTINGS</a>
+    <a
+      routerLink="/form"
+      routerLinkActive="c-header__menu-item--active-link"
+      (click)="toggleHamburgerMenu()"
+      >SETTINGS</a
+    >
   </li>
   <li class="c-header__menu-item">
-    <a routerLink="/details" (click)="toggleHamburgerMenu()">PROFILE</a>
+    <a
+      routerLink="/details"
+      routerLinkActive="c-header__menu-item--active-link"
+      (click)="toggleHamburgerMenu()"
+      >PROFILE</a
+    >
   </li>
 </ng-template>
