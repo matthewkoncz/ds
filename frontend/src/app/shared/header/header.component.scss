@@ -17,8 +17,13 @@
       list-style-type: none;
       a {
         color: rgb(255, 255, 255);
-        text-decoration: none;
         cursor: pointer;
+      }
+      &--active-link {
+        text-decoration: underline;
+      }
+      a:not(.c-header__menu-item--active-link) {
+        text-decoration: none;
       }
     }
   }
@@ -64,6 +69,9 @@
         z-index: 2;
         .c-header__menu-item {
           margin-top: 20px;
+          &--active {
+            text-decoration: underline;
+          }
           a {
             color: rgb(68, 68, 68);
           }

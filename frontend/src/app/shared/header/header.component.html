@@ -27,9 +27,19 @@
 <!-- menu items-->
 <ng-template #menuItemsRef>
   <li class="c-header__menu-item">
-    <a routerLink="/form" (click)="toggleHamburgerMenu()">SETTINGS</a>
+    <a
+      routerLink="/form"
+      routerLinkActive="c-header__menu-item--active-link"
+      (click)="toggleHamburgerMenu()"
+      >SETTINGS</a
+    >
   </li>
   <li class="c-header__menu-item">
-    <a routerLink="/details" (click)="toggleHamburgerMenu()">PROFILE</a>
+    <a
+      routerLink="/details"
+      routerLinkActive="c-header__menu-item--active-link"
+      (click)="toggleHamburgerMenu()"
+      >PROFILE</a
+    >
   </li>
 </ng-template>
