@@ -16,7 +16,7 @@
       <span class="c-header__hamburger-menu-line">_</span>
     </div>
     <div *ngIf="isHamburgerMenuOpen" class="c-header__mobile-menu-slider">
-      <p class="c-header__mobile-menu-close" (click)="toggleHamburgerMenu()">
+      <p class="c-header__mobile-menu-close" (click)="closeHamburgerMenu()">
         ✖
       </p>
       <ng-template [ngTemplateOutlet]="menuItemsRef"> </ng-template>
@@ -30,7 +30,7 @@
     <a
       routerLink="/form"
       routerLinkActive="c-header__menu-item--active-link"
-      (click)="toggleHamburgerMenu()"
+      (click)="closeHamburgerMenu()"
       >SETTINGS</a
     >
   </li>
@@ -38,7 +38,7 @@
     <a
       routerLink="/details"
       routerLinkActive="c-header__menu-item--active-link"
-      (click)="toggleHamburgerMenu()"
+      (click)="closeHamburgerMenu()"
       >PROFILE</a
     >
   </li>
