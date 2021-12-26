@@ -8,6 +8,7 @@ export class UserService {
   interfaceType = 'localStorage';
 
   public setData(userData: UserData): void {
+    userData.dateOfChange = new Date().toISOString();
     localStorage.setItem('userData', JSON.stringify(userData));
   }
 
