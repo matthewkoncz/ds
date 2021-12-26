@@ -10,14 +10,16 @@ import { UserService } from 'src/app/shared/services/user.service';
 export class UserProfileComponent {
   public userData: UserData = {};
 
-  age: number;
+  age: number | undefined;
 
   constructor(public userService: UserService) {
     this.userData = this.userService.getData();
-    this.userData.dateOfChange = new Date(
-      this.userData.dateOfChange as string
-    ).toLocaleString();
-    this.age = this.getAge(this.userService.getData().birthday as string);
+    if (this.userData) {
+      this.userData.dateOfChange = new Date(
+        this.userData.dateOfChange as string
+      ).toLocaleString();
+      this.age = this.getAge(this.userService.getData().birthday as string);
+    }
   }
 
   private getAge(birthDateString: string) {

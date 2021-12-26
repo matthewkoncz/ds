@@ -1,4 +1,4 @@
-<div class="c-user-profile">
+<div *ngIf="this.userData; else noData" class="c-user-profile">
   <div class="c-user-profile__image-block">
     <img
       [src]="this.userService.getData().avatar"
@@ -37,3 +37,6 @@
     </div>
   </div>
 </div>
+<ng-template #noData
+  ><h1 class="c-user-profile__no-data">No user data is added yet.</h1>
+</ng-template>
