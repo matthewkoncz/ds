@@ -11,4 +11,8 @@ export class HeaderComponent {
   toggleHamburgerMenu = () => {
     this.isHamburgerMenuOpen = !this.isHamburgerMenuOpen;
   };
+
+  closeHamburgerMenu = () => {
+    this.isHamburgerMenuOpen = false;
+  };
 }
