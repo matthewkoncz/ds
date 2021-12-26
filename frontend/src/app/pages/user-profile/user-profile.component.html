@@ -4,4 +4,4 @@
 <p>Email: {{ this.userService.getData().email }}</p>
 <p>Birthday: {{ this.userService.getData().birthday }}</p>
 <p>About: {{ this.userService.getData().about }}</p>
-<p>Avatar: {{ this.userService.getData().avatar }}</p>
+<img [src]="this.userService.getData().avatar" alt="avatar" />
