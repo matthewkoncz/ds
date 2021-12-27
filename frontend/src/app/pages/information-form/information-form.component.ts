@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UserService } from 'src/app/shared/services/user.service';
 import { FormGroup, FormControl } from '@angular/forms';
 
@@ -18,23 +18,26 @@ export class InformationFormComponent {
     avatar: new FormControl(''),
   });
 
-  constructor(public userService: UserService) {}
+  constructor(public userService: UserService) {
+    let savedUserData = this.userService.getData();
+    this.userForm.patchValue(savedUserData);
+  }
 
-  showPreview = (event: any): void => {
+  public convertImageToBase64 = (event: any): void => {
     const file = event.target.files[0];
     if (file) {
       let reader = new FileReader();
+      reader.readAsDataURL(file);
       reader.onload = () => {
         this.userForm.patchValue({
           avatar: reader.result as string,
         });
         this.userForm.get('avatar')?.updateValueAndValidity();
       };
-      reader.readAsDataURL(file);
     }
   };
 
-  onSubmit() {
+  public onSubmit() {
     this.userService.setData(this.userForm.value);
   }
 }
