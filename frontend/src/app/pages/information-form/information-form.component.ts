@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { UserService } from 'src/app/shared/services/user.service';
-import { FormGroup, FormControl } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormBuilder,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,16 +15,29 @@ import { Router } from '@angular/router';
 })
 export class InformationFormComponent {
   userForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    email: new FormControl(''),
+    firstName: new FormControl('', Validators.required),
+    lastName: new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.required, Validators.email]),
     phone: new FormControl(''),
-    birthday: new FormControl(''),
-    about: new FormControl(''),
-    avatar: new FormControl(''),
+    birthday: new FormControl('', Validators.required),
+    about: new FormControl('', [Validators.required, Validators.minLength(20)]),
+    avatar: new FormControl('', Validators.required),
   });
 
-  constructor(public userService: UserService, private router: Router) {
+  get userFormControl() {
+    return this.userForm.controls;
+  }
+
+  public submitted = false;
+
+  // max value for datepicker in "YYYY-MM-DD" format
+  public today = new Date().toISOString().substring(0, 10);
+
+  constructor(
+    public userService: UserService,
+    private router: Router,
+    public formBuilder: FormBuilder
+  ) {
     let savedUserData = this.userService.getData();
     this.userForm.patchValue(savedUserData);
   }
@@ -46,7 +64,10 @@ export class InformationFormComponent {
   };
 
   public onSubmit = () => {
-    this.userService.setData(this.userForm.value, this.navigate);
+    this.submitted = true;
+    if (this.userForm.valid) {
+      this.userService.setData(this.userForm.value, this.navigate);
+    }
   };
 
   public navigate = () => {

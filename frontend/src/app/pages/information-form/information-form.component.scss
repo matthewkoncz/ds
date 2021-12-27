@@ -17,12 +17,18 @@
         display: block;
         text-align: left;
         margin-bottom: 5px;
+        span {
+          color: red;
+        }
       }
       input,
       textarea {
         width: 100%;
         min-height: 40px;
         border-radius: 5px;
+      }
+      .c-information-form__validation-error {
+        color: red;
       }
       &--left {
         text-align: left;

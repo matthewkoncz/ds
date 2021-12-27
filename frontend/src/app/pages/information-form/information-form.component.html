@@ -6,36 +6,95 @@
   >
     <h1 class="c-information-form__title">User settings</h1>
     <div class="c-information-form__input-block">
-      <label for="first-name">First Name: </label>
+      <label for="first-name">First Name:<span> *</span></label>
       <input id="first-name" type="text" formControlName="firstName" />
+      <span
+        class="c-information-form__validation-error"
+        *ngIf="
+          (userFormControl['firstName'].touched || submitted) &&
+          userFormControl['firstName'].errors
+        "
+      >
+        Please add a first name
+      </span>
     </div>
     <div class="c-information-form__input-block">
-      <label for="last-name">Last Name: </label>
+      <label for="last-name">Last Name:<span> *</span></label>
       <input id="last-name" type="text" formControlName="lastName" />
+      <span
+        class="c-information-form__validation-error"
+        *ngIf="
+          (userFormControl['lastName'].touched || submitted) &&
+          userFormControl['lastName'].errors
+        "
+      >
+        Please add a last name
+      </span>
     </div>
     <div class="c-information-form__input-block">
-      <label for="email">Email: </label>
-      <input id="email" type="text" formControlName="email" />
+      <label for="email">Email:<span> *</span></label>
+      <input id="email" type="email" formControlName="email" />
+      <span
+        class="c-information-form__validation-error"
+        *ngIf="
+          (userFormControl['email'].touched || submitted) &&
+          userFormControl['email'].errors
+        "
+      >
+        Please add a valid email address
+      </span>
     </div>
     <div class="c-information-form__input-block">
-      <label for="phone">Phone </label>
+      <label for="phone">Phone</label>
       <input id="phone" type="text" formControlName="phone" />
     </div>
     <div class="c-information-form__input-block">
-      <label for="birthday">Birthday: </label>
-      <input id="birthday" type="date" formControlName="birthday" />
+      <label for="birthday">Date of birth:<span> *</span></label>
+      <input
+        id="birthday"
+        type="date"
+        formControlName="birthday"
+        [max]="today"
+      />
+      <span
+        class="c-information-form__validation-error"
+        *ngIf="
+          (userFormControl['birthday'].touched || submitted) &&
+          userFormControl['birthday'].errors
+        "
+      >
+        Please add a birthday
+      </span>
     </div>
     <div class="c-information-form__input-block">
-      <label for="about">About: </label>
+      <label for="about">About:<span> *</span></label>
       <textarea id="about" formControlName="about" rows="5"></textarea>
+      <span
+        class="c-information-form__validation-error"
+        *ngIf="
+          (userFormControl['about'].touched || submitted) &&
+          userFormControl['about'].errors
+        "
+      >
+        Please add a description
+      </span>
     </div>
     <div class="c-information-form__input-block">
-      <label for="about">Avatar: </label>
+      <label for="about">Avatar:<span> *</span></label>
       <input
         type="file"
         accept="image/*"
         (change)="convertImageToBase64($event)"
       />
+      <span
+        class="c-information-form__validation-error"
+        *ngIf="
+          (userFormControl['avatar'].touched || submitted) &&
+          userFormControl['avatar'].errors
+        "
+      >
+        Please add an avatar
+      </span>
     </div>
     <div
       class="
