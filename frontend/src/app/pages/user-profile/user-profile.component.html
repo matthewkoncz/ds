@@ -1,7 +1,42 @@
-<p>First Name: {{ this.userService.getData().firstName }}</p>
-<p>Last Name: {{ this.userService.getData().lastName }}</p>
-<p>Phone: {{ this.userService.getData().phone }}</p>
-<p>Email: {{ this.userService.getData().email }}</p>
-<p>Birthday: {{ this.userService.getData().birthday }}</p>
-<p>About: {{ this.userService.getData().about }}</p>
-<p>Avatar: {{ this.userService.getData().avatar }}</p>
+<div *ngIf="this.userData; else noData" class="c-user-profile">
+  <div class="c-user-profile__image-block">
+    <img
+      [src]="this.userService.getData().avatar"
+      alt="avatar"
+      class="c-user-profile__image"
+    />
+    <h1 class="c-user-profile__name">
+      {{ this.userService.getData().firstName }}
+      {{ this.userService.getData().lastName }}
+    </h1>
+    <p *ngIf="age != null" class="c-user-profile__years">{{ age }} years old</p>
+  </div>
+  <div class="c-user-profile__user-info-block-container">
+    <div class="c-user-profile__user-info-block">
+      <h3>Contact</h3>
+      <p>Phone: {{ this.userService.getData().phone }}</p>
+      <p>Email: {{ this.userService.getData().email }}</p>
+    </div>
+    <div class="c-user-profile__user-info-block">
+      <h3>User information</h3>
+      <p>First name: {{ this.userService.getData().firstName }}</p>
+      <p>Last name: {{ this.userService.getData().lastName }}</p>
+      <p>Date of birth: {{ this.userService.getData().birthday }}</p>
+    </div>
+    <div class="c-user-profile__user-info-block">
+      <h3>About</h3>
+      <p>{{ this.userService.getData().about }}</p>
+    </div>
+    <div class="c-user-profile__user-info-block">
+      <h3>System information</h3>
+      <p>Selected language:</p>
+      <p>
+        Date of last update:
+        {{ this.userData.dateOfChange }}
+      </p>
+    </div>
+  </div>
+</div>
+<ng-template #noData
+  ><h1 class="c-user-profile__no-data">No user data is added yet.</h1>
+</ng-template>

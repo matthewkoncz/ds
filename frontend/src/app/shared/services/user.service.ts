@@ -8,10 +8,11 @@ export class UserService {
   interfaceType = 'localStorage';
 
   public setData(userData: UserData): void {
+    userData.dateOfChange = new Date().toISOString();
     localStorage.setItem('userData', JSON.stringify(userData));
   }
 
   public getData(): UserData {
-    return JSON.parse(localStorage.getItem('userData') || '');
+    return JSON.parse(localStorage.getItem('userData') as string);
   }
 }

@@ -8,6 +8,7 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { InformationFormComponent } from './pages/information-form/information-form.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
     PageNotFoundComponent,
     WelcomeComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
