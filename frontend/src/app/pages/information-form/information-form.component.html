@@ -1,26 +1,58 @@
-<h1>User settings</h1>
-<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-  <label for="first-name">First Name: </label>
-  <input id="first-name" type="text" formControlName="firstName" />
-  <br />
-  <label for="last-name">Last Name: </label>
-  <input id="last-name" type="text" formControlName="lastName" />
-  <br />
-  <label for="email">Email: </label>
-  <input id="email" type="text" formControlName="email" />
-  <br />
-  <label for="phone">Phone </label>
-  <input id="phone" type="text" formControlName="phone" />
-  <br />
-  <label for="birthday">Birthday: </label>
-  <input id="birthday" type="date" formControlName="birthday" />
-  <br />
-  <label for="about">About: </label>
-  <input id="about" type="text" formControlName="about" />
-  <br />
-  <input type="file" accept="image/*" (change)="convertImageToBase64($event)" />
-  <br />
-  <button type="submit">Submit</button>
-  <br />
-  <img [src]="this.userService.getData().avatar" alt="preview" />
-</form>
+<div class="c-information-form">
+  <form
+    class="c-information-form__container"
+    [formGroup]="userForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <h1 class="c-information-form__title">User settings</h1>
+    <div class="c-information-form__input-block">
+      <label for="first-name">First Name: </label>
+      <input id="first-name" type="text" formControlName="firstName" />
+    </div>
+    <div class="c-information-form__input-block">
+      <label for="last-name">Last Name: </label>
+      <input id="last-name" type="text" formControlName="lastName" />
+    </div>
+    <div class="c-information-form__input-block">
+      <label for="email">Email: </label>
+      <input id="email" type="text" formControlName="email" />
+    </div>
+    <div class="c-information-form__input-block">
+      <label for="phone">Phone </label>
+      <input id="phone" type="text" formControlName="phone" />
+    </div>
+    <div class="c-information-form__input-block">
+      <label for="birthday">Birthday: </label>
+      <input id="birthday" type="date" formControlName="birthday" />
+    </div>
+    <div class="c-information-form__input-block">
+      <label for="about">About: </label>
+      <textarea id="about" formControlName="about" rows="5"></textarea>
+    </div>
+    <div class="c-information-form__input-block">
+      <label for="about">Avatar: </label>
+      <input
+        type="file"
+        accept="image/*"
+        (change)="convertImageToBase64($event)"
+      />
+    </div>
+    <div
+      class="
+        c-information-form__input-block c-information-form__input-block--left
+      "
+    >
+      <div *ngIf="this.userForm.get('avatar')?.value">
+        <img [src]="this.userForm.get('avatar')?.value" alt="preview" />
+        <p class="c-information-form__remove-button" (click)="removeImage()">
+          Remove
+        </p>
+      </div>
+    </div>
+    <div class="c-information-form__input-block">
+      <button class="c-information-form__submit-button" type="submit">
+        SUBMIT
+      </button>
+    </div>
+  </form>
+</div>

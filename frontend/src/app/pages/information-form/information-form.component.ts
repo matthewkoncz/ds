@@ -38,6 +38,13 @@ export class InformationFormComponent {
     }
   };
 
+  public removeImage = (): void => {
+    this.userForm.patchValue({
+      avatar: '',
+    });
+    this.userForm.get('avatar')?.updateValueAndValidity();
+  };
+
   public onSubmit = () => {
     this.userService.setData(this.userForm.value, this.navigate);
   };

@@ -7,10 +7,10 @@ import { UserData } from 'src/app/app.model';
 export class UserService {
   interfaceType = 'localStorage';
 
-  public setData(userData: UserData, callback: Function): void {
+  public setData(userData: UserData, navigationCallback: Function): void {
     userData.dateOfChange = new Date().toISOString();
     localStorage.setItem('userData', JSON.stringify(userData));
-    callback();
+    navigationCallback();
   }
 
   public getData(): UserData {
