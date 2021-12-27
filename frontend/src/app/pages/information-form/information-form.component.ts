@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from 'src/app/shared/services/user.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-information-form',
@@ -18,7 +19,7 @@ export class InformationFormComponent {
     avatar: new FormControl(''),
   });
 
-  constructor(public userService: UserService) {
+  constructor(public userService: UserService, private router: Router) {
     let savedUserData = this.userService.getData();
     this.userForm.patchValue(savedUserData);
   }
@@ -37,7 +38,11 @@ export class InformationFormComponent {
     }
   };
 
-  public onSubmit() {
-    this.userService.setData(this.userForm.value);
-  }
+  public onSubmit = () => {
+    this.userService.setData(this.userForm.value, this.navigate);
+  };
+
+  public navigate = () => {
+    this.router.navigate(['/details']);
+  };
 }
