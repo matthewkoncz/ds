@@ -45,3 +45,6 @@ Bonus points for:
 - Design application in a way that it would be easy to connect to existing API for storing data in a real backend. - Image optimisation for responsive layout
 - Image size/type restriction
 - Deploy Application to any hosting service to make it available online
+
+Note:
+the styling should be done by yourself (without the use of libraries)
