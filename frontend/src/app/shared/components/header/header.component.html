@@ -5,9 +5,11 @@
     /></a>
   </div>
   <!-- desktop -->
-  <ul class="c-header__menu">
-    <ng-template [ngTemplateOutlet]="menuItemsRef"></ng-template>
-  </ul>
+  <nav>
+    <ul class="c-header__menu">
+      <ng-template [ngTemplateOutlet]="menuItemsRef"></ng-template>
+    </ul>
+  </nav>
   <!-- mobil -->
   <div class="c-header__mobile-menu">
     <div class="c-header__hamburger-menu" (click)="toggleHamburgerMenu()">
@@ -19,7 +21,11 @@
       <p class="c-header__mobile-menu-close" (click)="closeHamburgerMenu()">
         ✖
       </p>
-      <ng-template [ngTemplateOutlet]="menuItemsRef"> </ng-template>
+      <nav>
+        <ul class="c-header__menu-items">
+          <ng-template [ngTemplateOutlet]="menuItemsRef"> </ng-template>
+        </ul>
+      </nav>
     </div>
   </div>
 </header>
