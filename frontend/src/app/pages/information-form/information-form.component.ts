@@ -33,6 +33,8 @@ export class InformationFormComponent {
   // max value for datepicker in "YYYY-MM-DD" format
   public today = new Date().toISOString().substring(0, 10);
 
+  public fileWarningMessage = '';
+
   constructor(
     public userService: UserService,
     private router: Router,
@@ -44,7 +46,18 @@ export class InformationFormComponent {
 
   public convertImageToBase64 = (event: any): void => {
     const file = event.target.files[0];
+
     if (file) {
+      if ((file as Blob).size / 1024 > 500) {
+        this.userForm.patchValue({
+          avatar: '',
+        });
+        this.userForm.get('avatar')?.updateValueAndValidity();
+        this.fileWarningMessage =
+          'The selected image is larger than 500KB. Please select a smaller one.';
+        return;
+      }
+      this.fileWarningMessage = '';
       let reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => {
