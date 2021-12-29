@@ -8,9 +8,8 @@ describe('HeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ]
-    })
-    .compileComponents();
+      declarations: [HeaderComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -21,5 +20,27 @@ describe('HeaderComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should have a closed hamburger menu by default', () => {
+    expect(component.isHamburgerMenuOpen).toBeFalse();
+  });
+
+  it('should open the hamburger menu with the toggleHamburgerMenu function', () => {
+    component.isHamburgerMenuOpen = false;
+    component.toggleHamburgerMenu();
+    expect(component.isHamburgerMenuOpen).toBeTrue();
+  });
+
+  it('should close the hamburger menu with the toggleHamburgerMenu function', () => {
+    component.isHamburgerMenuOpen = true;
+    component.toggleHamburgerMenu();
+    expect(component.isHamburgerMenuOpen).toBeFalse();
+  });
+
+  it('should close the hamburger menu with the closeHamburgerMenu function', () => {
+    component.isHamburgerMenuOpen = true;
+    component.closeHamburgerMenu();
+    expect(component.isHamburgerMenuOpen).toBeFalse();
   });
 });
