@@ -13,7 +13,7 @@ import { RestService } from './rest.service';
   providedIn: 'root',
 })
 export class UserService {
-  private selectedInterfaceType = InterfaceType.Rest;
+  private selectedInterfaceType = InterfaceType.LocalStorage;
   private usedService: DataService;
 
   constructor(
