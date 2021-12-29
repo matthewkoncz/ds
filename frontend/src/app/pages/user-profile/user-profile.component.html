@@ -9,7 +9,9 @@
       {{ this.userData.firstName }}
       {{ this.userData.lastName }}
     </h1>
-    <p *ngIf="age != null" class="c-user-profile__years">{{ age }} years old</p>
+    <p *ngIf="age || age === 0" class="c-user-profile__years">
+      {{ age }} years old
+    </p>
   </section>
   <section class="c-user-profile__user-info-block-container">
     <article class="c-user-profile__user-info-block">
