@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(25, 118, 210);
+  background-color: #1976d2;
   &__logo {
     display: flex;
     justify-content: space-between;
@@ -19,13 +19,19 @@
       margin: 0 25px 0 0;
       list-style-type: none;
       a {
-        color: rgb(255, 255, 255);
         cursor: pointer;
+        color: #ffffff;
       }
-      &--active-link {
-        text-decoration: underline;
+      a.c-header__menu-item--active-link {
+        font-family: "roboto-medium";
+        text-decoration: none;
+        padding: 8px 10px;
+        background: #ffffff;
+        border-radius: 4px;
+        color: #1976d2;
       }
       a:not(.c-header__menu-item--active-link) {
+        transition: all 0.6s;
         text-decoration: none;
       }
     }
@@ -49,7 +55,7 @@
         position: relative;
         cursor: pointer;
         &-line {
-          color: rgb(255, 255, 255);
+          color: #ffffff;
           font-size: 60px;
           line-height: 10px;
         }
@@ -64,10 +70,10 @@
         }
         position: absolute;
         height: 80%;
-        width: 80%;
+        width: 70%;
         right: 0;
         top: 75px;
-        background-color: white;
+        background-color: #ffffff;
         box-shadow: 0 6px 6px #0a101426, 0 0 52px #0a10141f;
         padding-left: 10px;
         z-index: 2;
@@ -75,11 +81,12 @@
           margin-top: 28px;
           .c-header__menu-item {
             margin-top: 25px;
-            &--active {
-              text-decoration: underline;
+            &--active-link {
+              text-decoration: none;
+              padding: 0;
             }
             a {
-              color: rgb(68, 68, 68);
+              color: #444444;
             }
           }
         }
