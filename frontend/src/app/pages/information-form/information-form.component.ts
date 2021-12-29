@@ -7,7 +7,6 @@ import {
   FormBuilder,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { ResponseStatus } from 'src/app/app.model';
 
 @Component({

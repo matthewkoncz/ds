@@ -24,7 +24,7 @@ export class UserProfileComponent {
     });
   }
 
-  private getAge(birthDateString: string) {
+  private getAge(birthDateString: string): number {
     let birthDate = new Date(birthDateString);
     var today = new Date();
     var age = today.getFullYear() - birthDate.getFullYear();
