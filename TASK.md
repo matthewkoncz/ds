@@ -42,7 +42,8 @@ Please attach a text file (in English) with comments to the implementation:
 Bonus points for:
 
 - Hosting project repository on any Git hosting services (GitHub, Bitbucket, GitLab, etc.)
-- Design application in a way that it would be easy to connect to existing API for storing data in a real backend. - Image optimisation for responsive layout
+- Design application in a way that it would be easy to connect to existing API for storing data in a real backend.
+- Image optimisation for responsive layout
 - Image size/type restriction
 - Deploy Application to any hosting service to make it available online
 
