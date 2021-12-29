@@ -1,7 +1,5 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
-import { LocalStorageService } from './localStorage.service';
-import { RestService } from './rest.service';
 
 import { UserService } from './user.service';
 
