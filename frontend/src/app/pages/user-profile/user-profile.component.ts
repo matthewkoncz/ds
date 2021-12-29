@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UserData } from 'src/app/app.model';
 import { UserService } from 'src/app/shared/services/user.service';
 
@@ -25,10 +25,10 @@ export class UserProfileComponent {
   }
 
   private getAge(birthDateString: string): number {
-    let birthDate = new Date(birthDateString);
-    var today = new Date();
-    var age = today.getFullYear() - birthDate.getFullYear();
-    var m = today.getMonth() - birthDate.getMonth();
+    const birthDate = new Date(birthDateString);
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
       age--;
     }
