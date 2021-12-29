@@ -41,13 +41,13 @@ export class InformationFormComponent {
     private router: Router,
     public formBuilder: FormBuilder
   ) {
-    let savedUserData = this.userService.getData();
-    this.userForm.patchValue(savedUserData);
+    this.userService.getData().subscribe((savedUserData) => {
+      this.userForm.patchValue(savedUserData);
+    });
   }
 
-  public convertImageToBase64 = (event: any): void => {
-    const file = event.target.files[0];
-
+  public convertImageToBase64 = (event: Event): void => {
+    const file = (event.target as HTMLInputElement).files![0];
     if (file) {
       if ((file as Blob).size / 1024 > 500) {
         this.userForm.patchValue({
@@ -59,7 +59,7 @@ export class InformationFormComponent {
         return;
       }
       this.fileWarningMessage = '';
-      let reader = new FileReader();
+      const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => {
         this.userForm.patchValue({
