@@ -6,10 +6,18 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 
 const routes: Routes = [
-  { path: 'form', component: InformationFormComponent },
-  { path: 'details', component: UserProfileComponent },
-  { path: '', component: WelcomeComponent },
-  { path: '**', component: PageNotFoundComponent },
+  {
+    path: 'form',
+    component: InformationFormComponent,
+    data: { title: 'User Form' },
+  },
+  {
+    path: 'details',
+    component: UserProfileComponent,
+    data: { title: 'User Details' },
+  },
+  { path: '', component: WelcomeComponent, data: { title: 'Home' } },
+  { path: '**', component: PageNotFoundComponent, data: { title: '404' } },
 ];
 
 @NgModule({

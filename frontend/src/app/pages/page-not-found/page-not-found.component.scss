@@ -1,14 +1,33 @@
 .c-page-not-found {
-  padding-top: 2vh;
+  min-height: calc(100vh - 140px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   &__label {
     font-size: 6vw;
-    text-align: center;
+    line-height: 2vw;
+    margin-top: 0;
   }
-  &__img-container {
-    text-align: center;
-    img {
+  &__img {
+    width: 14vw;
+  }
+  @media only screen and (max-width: 768px) {
+    &__label {
+      font-size: 7vw;
+    }
+    &__img {
       width: 14vw;
-      min-width: 80px;
+      min-width: 150px;
+    }
+  }
+  @media only screen and (max-width: 480px) {
+    &__label {
+      font-size: 10vw;
+    }
+    &__img {
+      width: 14vw;
+      min-width: 100px;
     }
   }
 }

@@ -3,16 +3,15 @@ import { TestBed } from '@angular/core/testing';
 import { LocalStorageService } from './localStorage.service';
 import { RestService } from './rest.service';
 
-import { UserService } from './user.service';
-
-describe('UserService', () => {
-  let service: UserService;
+describe('RestService', () => {
+  let service: RestService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule],
+      providers: [RestService, LocalStorageService],
     });
-    service = TestBed.inject(UserService);
+    service = TestBed.inject(RestService);
   });
 
   it('should be created', () => {

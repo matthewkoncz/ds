@@ -1,13 +1,16 @@
 <header class="c-header">
   <div class="c-header__logo">
-    <a routerLink="/"
-      ><img class="c-header__logo-img" src="assets/images/fox.png" alt="logo"
+    <a routerLink="/">
+      <!-- https://www.flaticon.com/free-sticker/fox_6259648?related_id=6259648 -->
+      <img class="c-header__logo-img" src="assets/images/fox.webp" alt="logo"
     /></a>
   </div>
   <!-- desktop -->
-  <ul class="c-header__menu">
-    <ng-template [ngTemplateOutlet]="menuItemsRef"></ng-template>
-  </ul>
+  <nav>
+    <ul class="c-header__menu">
+      <ng-template [ngTemplateOutlet]="menuItemsRef"></ng-template>
+    </ul>
+  </nav>
   <!-- mobil -->
   <div class="c-header__mobile-menu">
     <div class="c-header__hamburger-menu" (click)="toggleHamburgerMenu()">
@@ -19,13 +22,26 @@
       <p class="c-header__mobile-menu-close" (click)="closeHamburgerMenu()">
         ✖
       </p>
-      <ng-template [ngTemplateOutlet]="menuItemsRef"> </ng-template>
+      <nav>
+        <ul class="c-header__menu-items">
+          <ng-template [ngTemplateOutlet]="menuItemsRef"> </ng-template>
+        </ul>
+      </nav>
     </div>
   </div>
 </header>
 
 <!-- menu items-->
 <ng-template #menuItemsRef>
+  <li class="c-header__menu-item">
+    <a
+      routerLink="/"
+      routerLinkActive="c-header__menu-item--active-link"
+      [routerLinkActiveOptions]="{ exact: true }"
+      (click)="closeHamburgerMenu()"
+      >HOME</a
+    >
+  </li>
   <li class="c-header__menu-item">
     <a
       routerLink="/form"

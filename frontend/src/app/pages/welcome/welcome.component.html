@@ -1,8 +1,11 @@
-<div class="c-welcome">
+<main class="c-welcome">
   <p class="c-welcome__label">WELCOME</p>
   <p class="c-welcome__label c-welcome__label--small">TO THE</p>
   <p class="c-welcome__label">USER MANAGER SITE</p>
-  <p class="c-welcome__img-container">
-    <img src="assets/images/bird.png" />
-  </p>
-</div>
+  <!-- https://www.flaticon.com/free-sticker/bird_6259556 -->
+  <picture class="c-welcome__img-container">
+    <source srcset="assets/images/bird_lg.webp" media="(min-width: 769px)" />
+    <source srcset="assets/images/bird_md.webp" media="(min-width: 481px)" />
+    <img src="assets/images/bird_sm.webp" />
+  </picture>
+</main>

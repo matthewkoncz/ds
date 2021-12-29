@@ -1,26 +1,125 @@
-<h1>User settings</h1>
-<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-  <label for="first-name">First Name: </label>
-  <input id="first-name" type="text" formControlName="firstName" />
-  <br />
-  <label for="last-name">Last Name: </label>
-  <input id="last-name" type="text" formControlName="lastName" />
-  <br />
-  <label for="email">Email: </label>
-  <input id="email" type="text" formControlName="email" />
-  <br />
-  <label for="phone">Phone </label>
-  <input id="phone" type="text" formControlName="phone" />
-  <br />
-  <label for="birthday">Birthday: </label>
-  <input id="birthday" type="date" formControlName="birthday" />
-  <br />
-  <label for="about">About: </label>
-  <input id="about" type="text" formControlName="about" />
-  <br />
-  <input type="file" accept="image/*" (change)="convertImageToBase64($event)" />
-  <br />
-  <button type="submit">Submit</button>
-  <br />
-  <img [src]="this.userService.getData().avatar" alt="preview" />
-</form>
+<main class="c-information-form">
+  <form
+    class="c-information-form__container"
+    [formGroup]="userForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <h1 class="c-information-form__title">User settings</h1>
+    <section class="c-information-form__input-block">
+      <label for="first-name">First Name:<span> *</span></label>
+      <input id="first-name" type="text" formControlName="firstName" />
+      <span
+        class="c-information-form__validation-error"
+        *ngIf="
+          (userFormControl['firstName'].touched || submitted) &&
+          userFormControl['firstName'].errors
+        "
+      >
+        Please add a first name.
+      </span>
+    </section>
+    <section class="c-information-form__input-block">
+      <label for="last-name">Last Name:<span> *</span></label>
+      <input id="last-name" type="text" formControlName="lastName" />
+      <span
+        class="c-information-form__validation-error"
+        *ngIf="
+          (userFormControl['lastName'].touched || submitted) &&
+          userFormControl['lastName'].errors
+        "
+      >
+        Please add a last name.
+      </span>
+    </section>
+    <section class="c-information-form__input-block">
+      <label for="email">Email:<span> *</span></label>
+      <input id="email" type="email" formControlName="email" />
+      <span
+        class="c-information-form__validation-error"
+        *ngIf="
+          (userFormControl['email'].touched || submitted) &&
+          userFormControl['email'].errors
+        "
+      >
+        Please add a valid email address.
+      </span>
+    </section>
+    <section class="c-information-form__input-block">
+      <label for="phone">Phone</label>
+      <input id="phone" type="text" formControlName="phone" />
+    </section>
+    <section class="c-information-form__input-block">
+      <label for="birthday">Date of birth:<span> *</span></label>
+      <input
+        id="birthday"
+        type="date"
+        formControlName="birthday"
+        [max]="today"
+      />
+      <span
+        class="c-information-form__validation-error"
+        *ngIf="
+          (userFormControl['birthday'].touched || submitted) &&
+          userFormControl['birthday'].errors
+        "
+      >
+        Please add a birthday.
+      </span>
+    </section>
+    <section class="c-information-form__input-block">
+      <label for="about">About:<span> *</span></label>
+      <textarea id="about" formControlName="about" rows="5"></textarea>
+      <span
+        class="c-information-form__validation-error"
+        *ngIf="
+          (userFormControl['about'].touched || submitted) &&
+          userFormControl['about'].errors
+        "
+      >
+        Please add a description.
+      </span>
+    </section>
+    <section class="c-information-form__input-block">
+      <label for="about">Avatar:<span> *</span></label>
+      <input
+        type="file"
+        accept="image/*"
+        maxFileSize="1"
+        (change)="convertImageToBase64($event)"
+      />
+      <span
+        class="c-information-form__validation-error"
+        *ngIf="
+          (userFormControl['avatar'].touched || submitted) &&
+          userFormControl['avatar'].errors &&
+          !fileWarningMessage
+        "
+      >
+        Please add an avatar.
+      </span>
+      <span
+        class="c-information-form__validation-error"
+        *ngIf="fileWarningMessage"
+      >
+        {{ fileWarningMessage }}
+      </span>
+    </section>
+    <section
+      class="
+        c-information-form__input-block c-information-form__input-block--left
+      "
+    >
+      <div *ngIf="this.userForm.get('avatar')?.value">
+        <img [src]="this.userForm.get('avatar')?.value" alt="preview" />
+        <p class="c-information-form__remove-button" (click)="removeImage()">
+          Remove
+        </p>
+      </div>
+    </section>
+    <section class="c-information-form__input-block">
+      <button class="c-information-form__submit-button" type="submit">
+        SUBMIT
+      </button>
+    </section>
+  </form>
+</main>
