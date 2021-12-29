@@ -13,13 +13,15 @@ export class UserProfileComponent {
   age: number | undefined;
 
   constructor(public userService: UserService) {
-    this.userData = this.userService.getData();
-    if (this.userData) {
-      this.userData.dateOfChange = new Date(
-        this.userData.dateOfChange as string
-      ).toLocaleString();
-      this.age = this.getAge(this.userService.getData().birthday as string);
-    }
+    userService.getData().subscribe((userData: UserData) => {
+      this.userData = userData;
+      if (this.userData) {
+        this.userData.dateOfChange = new Date(
+          this.userData.dateOfChange as string
+        ).toLocaleString();
+        this.age = this.getAge(userData.birthday as string);
+      }
+    });
   }
 
   private getAge(birthDateString: string) {

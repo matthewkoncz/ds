@@ -7,6 +7,8 @@ import {
   FormBuilder,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { ResponseStatus } from 'src/app/app.model';
 
 @Component({
   selector: 'app-information-form',
@@ -79,11 +81,13 @@ export class InformationFormComponent {
   public onSubmit = () => {
     this.submitted = true;
     if (this.userForm.valid) {
-      this.userService.setData(this.userForm.value, this.navigate);
+      this.userService
+        .setData(this.userForm.value)
+        .subscribe((response: ResponseStatus) => {
+          if (response?.status === 'OK') {
+            this.router.navigate(['/details']);
+          }
+        });
     }
-  };
-
-  public navigate = () => {
-    this.router.navigate(['/details']);
   };
 }

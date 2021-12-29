@@ -10,6 +10,7 @@ import { InformationFormComponent } from './pages/information-form/information-f
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     PageNotFoundComponent,
     WelcomeComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+  ],
   bootstrap: [AppComponent],
   exports: [ReactiveFormsModule],
 })
