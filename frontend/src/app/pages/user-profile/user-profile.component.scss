@@ -24,7 +24,6 @@
       margin-bottom: 0;
       text-align: center;
       word-wrap: break-word;
-
     }
   }
   .c-user-profile__user-info-block-container {
@@ -54,7 +53,9 @@
     }
   }
 }
-.c-user-profile__no-data {
+.c-user-profile__no-data,
+.c-user-profile__loading,
+.c-user-profile__error-message {
   min-height: calc(100vh - 140px - 30vw);
   text-align: center;
   padding: 15vw;

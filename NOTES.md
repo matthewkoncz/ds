@@ -91,7 +91,6 @@ E.g:
 - Localization
 - Integration tests
 - More links for the footer
-- More manual testing
 
 ## Feedback
 

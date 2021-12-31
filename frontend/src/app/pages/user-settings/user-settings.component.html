@@ -15,12 +15,12 @@
           userFormControl['firstName'].errors
         "
       >
-        <ng-component *ngIf="userFormControl['firstName'].errors['required']">
-          Last name is required</ng-component
-        >
-        <ng-component *ngIf="userFormControl['firstName'].errors['maxlength']">
-          Last name must not exceed 50 characters
-        </ng-component>
+        <ng-container *ngIf="userFormControl['firstName'].errors['required']">
+          First name is required
+        </ng-container>
+        <ng-container *ngIf="userFormControl['firstName'].errors['maxlength']">
+          First name must not exceed 50 characters
+        </ng-container>
       </span>
     </section>
     <section class="c-user-settings__input-block">
@@ -33,12 +33,12 @@
           userFormControl['lastName'].errors
         "
       >
-        <ng-component *ngIf="userFormControl['lastName'].errors['required']">
+        <ng-container *ngIf="userFormControl['lastName'].errors['required']">
           Last name is required
-        </ng-component>
-        <ng-component *ngIf="userFormControl['lastName'].errors['maxlength']">
+        </ng-container>
+        <ng-container *ngIf="userFormControl['lastName'].errors['maxlength']">
           Last name must not exceed 50 characters
-        </ng-component>
+        </ng-container>
       </span>
     </section>
     <section class="c-user-settings__input-block">
@@ -57,6 +57,16 @@
     <section class="c-user-settings__input-block">
       <label for="phone">Phone</label>
       <input id="phone" type="text" formControlName="phone" />
+      <span
+        class="c-user-settings__validation-error"
+        *ngIf="
+          (userFormControl['phone'].touched || submitted) &&
+          userFormControl['phone'].errors
+        "
+      >
+        Only valid phone numbers can be used (please use only numbers and plus
+        sign)
+      </span>
     </section>
     <section class="c-user-settings__input-block">
       <label for="birthday">Date of birth:<span> *</span></label>
@@ -86,15 +96,15 @@
           userFormControl['about'].errors
         "
       >
-        <ng-component *ngIf="userFormControl['about'].errors['required']">
+        <ng-container *ngIf="userFormControl['about'].errors['required']">
           About section is required
-        </ng-component>
-        <ng-component *ngIf="userFormControl['about'].errors['minlength']">
+        </ng-container>
+        <ng-container *ngIf="userFormControl['about'].errors['minlength']">
           About section must be at least 10 characters
-        </ng-component>
-        <ng-component *ngIf="userFormControl['about'].errors['maxlength']">
+        </ng-container>
+        <ng-container *ngIf="userFormControl['about'].errors['maxlength']">
           About section must not exceed 500 characters
-        </ng-component>
+        </ng-container>
       </span>
     </section>
     <section class="c-user-settings__input-block">
@@ -136,6 +146,9 @@
       <button class="c-user-settings__submit-button" type="submit">
         SUBMIT
       </button>
+      <p class="c-user-settings__validation-error" *ngIf="submitErrorMessage">
+        {{ submitErrorMessage }}
+      </p>
     </section>
   </form>
 </main>

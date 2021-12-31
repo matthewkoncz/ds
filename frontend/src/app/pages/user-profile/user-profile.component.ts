@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
 import { UserData } from 'src/app/app.model';
 import { UserService } from 'src/app/shared/services/user.service';
 
@@ -21,16 +22,35 @@ export class UserProfileComponent {
    */
   age: number | undefined;
 
+  /**
+   * Indicates if the page is loading
+   */
+  public loading = false;
+
+  /**
+   * Indicates if there is an error during data fetching
+   */
+  public fetchingErrorMessage = '';
+
   constructor(public userService: UserService) {
-    userService.getData().subscribe((userData: UserData) => {
-      this.userData = userData;
-      if (this.userData) {
-        this.userData.dateOfChange = new Date(
-          this.userData.dateOfChange as string
-        ).toLocaleString();
-        this.age = this.getAgeByBirthDate(userData.birthday as string);
+    this.loading = true;
+    userService.getData().subscribe(
+      (userData: UserData) => {
+        this.userData = userData;
+        if (this.userData) {
+          this.userData.dateOfChange = new Date(
+            this.userData.dateOfChange as string
+          ).toLocaleString();
+          this.age = this.getAgeByBirthDate(userData.birthday as string);
+        }
+      },
+      (error: HttpErrorResponse) => {
+        this.fetchingErrorMessage = error.statusText;
+      },
+      () => {
+        this.loading = false;
       }
-    });
+    );
   }
 
   /**
@@ -38,8 +58,7 @@ export class UserProfileComponent {
    * @param birthDateString Date of birth on the following format: "yyyy-MM-dd"
    * @returns
    */
-  getAgeByBirthDate(birthDateString: string): number {
-    console.log(birthDateString);
+  public getAgeByBirthDate(birthDateString: string): number {
     const birthDate = new Date(birthDateString);
     const today = new Date();
     let age = today.getFullYear() - birthDate.getFullYear();

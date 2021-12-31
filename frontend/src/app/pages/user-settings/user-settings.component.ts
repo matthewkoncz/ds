@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ResponseStatus } from 'src/app/app.model';
+import { HttpErrorResponse } from '@angular/common/http';
 
 /**
  * User settings page
@@ -30,9 +31,9 @@ export class UserSettingsComponent {
       Validators.required,
       Validators.maxLength(50),
     ]),
-    email: new FormControl('', [Validators.email]),
+    email: new FormControl('', [Validators.required, Validators.email]),
     phone: new FormControl('', [Validators.pattern('[- +()0-9]+')]),
-    birthday: new FormControl(null, Validators.required),
+    birthday: new FormControl('', Validators.required),
     about: new FormControl('', [
       Validators.required,
       Validators.minLength(10),
@@ -63,6 +64,11 @@ export class UserSettingsComponent {
    * Notifies the user if the file is too large
    */
   public fileWarningMessage = '';
+
+  /**
+   * Describes the error message after submitting
+   */
+  public submitErrorMessage = '';
 
   constructor(
     public userService: UserService,
@@ -120,13 +126,16 @@ export class UserSettingsComponent {
   public onSubmit = () => {
     this.submitted = true;
     if (this.userForm.valid) {
-      this.userService
-        .setData(this.userForm.value)
-        .subscribe((response: ResponseStatus) => {
+      this.userService.setData(this.userForm.value).subscribe(
+        (response: ResponseStatus) => {
           if (response?.status === 'OK') {
             this.router.navigate(['/details']);
           }
-        });
+        },
+        (error: HttpErrorResponse) => {
+          this.submitErrorMessage = error.statusText;
+        }
+      );
     }
   };
 }
