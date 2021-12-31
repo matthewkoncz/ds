@@ -1,47 +1,51 @@
-<main class="c-information-form">
+<main class="c-user-settings">
   <form
-    class="c-information-form__container"
+    class="c-user-settings__container"
     [formGroup]="userForm"
     (ngSubmit)="onSubmit()"
   >
-    <h1 class="c-information-form__title">User settings</h1>
-    <section class="c-information-form__input-block">
+    <h1 class="c-user-settings__title">User settings</h1>
+    <section class="c-user-settings__input-block">
       <label for="first-name">First Name:<span> *</span></label>
       <input id="first-name" type="text" formControlName="firstName" />
       <span
-        class="c-information-form__validation-error"
+        class="c-user-settings__validation-error"
         *ngIf="
           (userFormControl['firstName'].touched || submitted) &&
           userFormControl['firstName'].errors
         "
       >
-        <ng-component *ngIf="userFormControl['firstName'].errors['required']"> Last name is required</ng-component>
+        <ng-component *ngIf="userFormControl['firstName'].errors['required']">
+          Last name is required</ng-component
+        >
         <ng-component *ngIf="userFormControl['firstName'].errors['maxlength']">
           Last name must not exceed 50 characters
         </ng-component>
       </span>
     </section>
-    <section class="c-information-form__input-block">
+    <section class="c-user-settings__input-block">
       <label for="last-name">Last Name:<span> *</span></label>
       <input id="last-name" type="text" formControlName="lastName" />
       <span
-        class="c-information-form__validation-error"
+        class="c-user-settings__validation-error"
         *ngIf="
           (userFormControl['lastName'].touched || submitted) &&
           userFormControl['lastName'].errors
         "
       >
-        <div *ngIf="userFormControl['lastName'].errors['required']"> Last name is required</div>
-        <div *ngIf="userFormControl['lastName'].errors['maxlength']">
+        <ng-component *ngIf="userFormControl['lastName'].errors['required']">
+          Last name is required
+        </ng-component>
+        <ng-component *ngIf="userFormControl['lastName'].errors['maxlength']">
           Last name must not exceed 50 characters
-        </div>
+        </ng-component>
       </span>
     </section>
-    <section class="c-information-form__input-block">
+    <section class="c-user-settings__input-block">
       <label for="email">Email:<span> *</span></label>
       <input id="email" type="email" formControlName="email" />
       <span
-        class="c-information-form__validation-error"
+        class="c-user-settings__validation-error"
         *ngIf="
           (userFormControl['email'].touched || submitted) &&
           userFormControl['email'].errors
@@ -50,11 +54,11 @@
         A valid email address is required
       </span>
     </section>
-    <section class="c-information-form__input-block">
+    <section class="c-user-settings__input-block">
       <label for="phone">Phone</label>
       <input id="phone" type="text" formControlName="phone" />
     </section>
-    <section class="c-information-form__input-block">
+    <section class="c-user-settings__input-block">
       <label for="birthday">Date of birth:<span> *</span></label>
       <input
         id="birthday"
@@ -63,7 +67,7 @@
         [max]="today"
       />
       <span
-        class="c-information-form__validation-error"
+        class="c-user-settings__validation-error"
         *ngIf="
           (userFormControl['birthday'].touched || submitted) &&
           userFormControl['birthday'].errors
@@ -72,26 +76,28 @@
         Date of birth is required
       </span>
     </section>
-    <section class="c-information-form__input-block">
+    <section class="c-user-settings__input-block">
       <label for="about">About:<span> *</span></label>
       <textarea id="about" formControlName="about" rows="5"></textarea>
       <span
-        class="c-information-form__validation-error"
+        class="c-user-settings__validation-error"
         *ngIf="
           (userFormControl['about'].touched || submitted) &&
           userFormControl['about'].errors
         "
       >
-        <div *ngIf="userFormControl['about'].errors['required']"> About section is required</div>
-        <div *ngIf="userFormControl['about'].errors['minlength']">
+        <ng-component *ngIf="userFormControl['about'].errors['required']">
+          About section is required
+        </ng-component>
+        <ng-component *ngIf="userFormControl['about'].errors['minlength']">
           About section must be at least 10 characters
-        </div>
-        <div *ngIf="userFormControl['about'].errors['maxlength']">
+        </ng-component>
+        <ng-component *ngIf="userFormControl['about'].errors['maxlength']">
           About section must not exceed 500 characters
-        </div>
+        </ng-component>
       </span>
     </section>
-    <section class="c-information-form__input-block">
+    <section class="c-user-settings__input-block">
       <label for="about">Avatar:<span> *</span></label>
       <input
         type="file"
@@ -100,7 +106,7 @@
         (change)="convertImageToBase64($event)"
       />
       <span
-        class="c-information-form__validation-error"
+        class="c-user-settings__validation-error"
         *ngIf="
           (userFormControl['avatar'].touched || submitted) &&
           userFormControl['avatar'].errors &&
@@ -110,26 +116,24 @@
         Avatar is required
       </span>
       <span
-        class="c-information-form__validation-error"
+        class="c-user-settings__validation-error"
         *ngIf="fileWarningMessage"
       >
         {{ fileWarningMessage }}
       </span>
     </section>
     <section
-      class="
-        c-information-form__input-block c-information-form__input-block--left
-      "
+      class="c-user-settings__input-block c-user-settings__input-block--left"
     >
       <div *ngIf="this.userForm.get('avatar')?.value">
         <img [src]="this.userForm.get('avatar')?.value" alt="preview" />
-        <p class="c-information-form__remove-button" (click)="removeImage()">
+        <p class="c-user-settings__remove-button" (click)="removeImage()">
           Remove
         </p>
       </div>
     </section>
-    <section class="c-information-form__input-block">
-      <button class="c-information-form__submit-button" type="submit">
+    <section class="c-user-settings__input-block">
+      <button class="c-user-settings__submit-button" type="submit">
         SUBMIT
       </button>
     </section>

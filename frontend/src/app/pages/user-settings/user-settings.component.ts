@@ -10,11 +10,11 @@ import { Router } from '@angular/router';
 import { ResponseStatus } from 'src/app/app.model';
 
 @Component({
-  selector: 'app-information-form',
-  templateUrl: './information-form.component.html',
-  styleUrls: ['./information-form.component.scss'],
+  selector: 'app-user-settings',
+  templateUrl: './user-settings.component.html',
+  styleUrls: ['./user-settings.component.scss'],
 })
-export class InformationFormComponent {
+export class UserSettingsComponent {
   userForm = new FormGroup({
     firstName: new FormControl('', [
       Validators.required,

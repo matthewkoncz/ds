@@ -3,22 +3,22 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { UserService } from 'src/app/shared/services/user.service';
-import { InformationFormComponent } from './information-form.component';
+import { UserSettingsComponent } from './user-settings.component';
 
-describe('InformationFormComponent', () => {
-  let component: InformationFormComponent;
-  let fixture: ComponentFixture<InformationFormComponent>;
+describe('UserSettingsComponent', () => {
+  let component: UserSettingsComponent;
+  let fixture: ComponentFixture<UserSettingsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [InformationFormComponent],
+      declarations: [UserSettingsComponent],
       imports: [HttpClientModule, AppRoutingModule, ReactiveFormsModule],
       providers: [UserService],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InformationFormComponent);
+    fixture = TestBed.createComponent(UserSettingsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

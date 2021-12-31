@@ -1,4 +1,4 @@
-.c-information-form {
+.c-user-settings {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -12,7 +12,7 @@
     width: 50%;
     padding: 50px;
     box-shadow: 0 6px 6px #0a101426, 0 0 52px #0a10141f;
-    .c-information-form__input-block {
+    .c-user-settings__input-block {
       text-align: center;
       margin-top: 20px;
       label {
@@ -29,23 +29,27 @@
         min-height: 40px;
         border-radius: 5px;
       }
-      .c-information-form__validation-error {
+      .c-user-settings__validation-error {
         color: red;
       }
       &--left {
         text-align: left;
+        width: fit-content;
         img {
           max-width: 200px;
           max-height: 200px;
+          margin-bottom: 5px;
+          border: 1px solid lightgrey;
         }
       }
-      .c-information-form__remove-button {
+      .c-user-settings__remove-button {
+        text-align: center;
         margin-top: 2px;
         color: red;
         font-size: 13px;
         cursor: pointer;
       }
-      .c-information-form__submit-button {
+      .c-user-settings__submit-button {
         margin-top: 20px;
         padding: 10px 34px;
         background-color: #1976d2;
@@ -64,7 +68,7 @@
   }
 }
 @media only screen and (max-width: 480px) {
-  .c-information-form {
+  .c-user-settings {
     padding: 10px;
     &__title {
       margin-top: 2vh;
@@ -72,13 +76,9 @@
     &__container {
       width: 80%;
       padding: 20px;
-      .c-information-form__input-block {
-        &--left {
-          img {
-            max-width: 120px;
-            max-height: 120px;
-          }
-        }
+      .c-user-settings__input-block &--left img {
+        max-width: 120px;
+        max-height: 120px;
       }
     }
   }
