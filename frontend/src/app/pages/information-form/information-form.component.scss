@@ -56,6 +56,9 @@
         box-shadow: 0 2px 5px #00000042;
         cursor: pointer;
         border: none;
+        &:hover {
+          background-color: #1080f0;
+        }
       }
     }
   }

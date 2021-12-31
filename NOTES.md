@@ -70,7 +70,7 @@ Saving images to LocalStorage was completely new for me. I also gained experienc
 
 ## Alternative solutions
 
-- use SSR for SEO reasons
+- use SSR for SEO reasons (if needed)
 - navigation bar on the left/right side of the page
 - use other language/libraries/frameworks
 - build UI with a UI component library (PrimeFaces, Bootstrap, Material)
@@ -92,7 +92,6 @@ E.g:
 - Localization
 - Integration tests
 - More links for the footer
-- Minor UI fixes (hover effects, better sizing)
 - More manual testing
 
 ## Feedback
