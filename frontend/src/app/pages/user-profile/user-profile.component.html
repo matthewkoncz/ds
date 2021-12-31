@@ -1,4 +1,25 @@
-<main *ngIf="this.userData; else noData" class="c-user-profile">
+<main *ngIf="loading" class="c-user-profile__loading">
+  <h1>Loading ...</h1>
+</main>
+
+<main
+  *ngIf="!loading && fetchingErrorMessage"
+  class="c-user-profile__error-message"
+>
+  <h1>{{ fetchingErrorMessage }}</h1>
+</main>
+
+<main
+  *ngIf="!loading && !fetchingErrorMessage && !this.userData"
+  class="c-user-profile__no-data"
+>
+  <h1>No user data is added yet.</h1>
+</main>
+
+<main
+  *ngIf="!loading && !fetchingErrorMessage && this.userData"
+  class="c-user-profile"
+>
   <section class="c-user-profile__image-block">
     <img
       [src]="this.userData.avatar"
@@ -39,8 +60,3 @@
     </article>
   </section>
 </main>
-<ng-template #noData>
-  <main class="c-user-profile__no-data">
-    <h1>No user data is added yet.</h1>
-  </main>
-</ng-template>

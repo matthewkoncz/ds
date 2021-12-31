@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
-import { InformationFormComponent } from './pages/information-form/information-form.component';
+import { UserSettingsComponent } from './pages/user-settings/user-settings.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -18,7 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     UserProfileComponent,
-    InformationFormComponent,
+    UserSettingsComponent,
     PageNotFoundComponent,
     WelcomeComponent,
   ],

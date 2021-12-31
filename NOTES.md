@@ -54,7 +54,7 @@ Routing is solved by the default Angular routing module.
 
 ### IDE
 
-I used VSCode.
+I used VSCode (macOS).
 
 ### TESTING
 
@@ -70,7 +70,7 @@ Saving images to LocalStorage was completely new for me. I also gained experienc
 
 ## Alternative solutions
 
-- use SSR for SEO reasons
+- use SSR for SEO reasons (if needed)
 - navigation bar on the left/right side of the page
 - use other language/libraries/frameworks
 - build UI with a UI component library (PrimeFaces, Bootstrap, Material)
@@ -88,13 +88,9 @@ E.g:
 
 - Accessibility features (for visually impared users)
 - Sources page to list the used free resources (images)
-- Commenting the code (now I added only a few lines where the code is not completely self describing)
 - Localization
 - Integration tests
 - More links for the footer
-- More validation for the form items (length)
-- Minor UI fixes (hover effects, better sizing)
-- More manual testing
 
 ## Feedback
 

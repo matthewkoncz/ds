@@ -8,33 +8,67 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ResponseStatus } from 'src/app/app.model';
+import { HttpErrorResponse } from '@angular/common/http';
 
+/**
+ * User settings page
+ */
 @Component({
-  selector: 'app-information-form',
-  templateUrl: './information-form.component.html',
-  styleUrls: ['./information-form.component.scss'],
+  selector: 'app-user-settings',
+  templateUrl: './user-settings.component.html',
+  styleUrls: ['./user-settings.component.scss'],
 })
-export class InformationFormComponent {
+export class UserSettingsComponent {
+  /**
+   * Reactive form for user information
+   */
   userForm = new FormGroup({
-    firstName: new FormControl('', Validators.required),
-    lastName: new FormControl('', Validators.required),
+    firstName: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(50),
+    ]),
+    lastName: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(50),
+    ]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    phone: new FormControl(''),
+    phone: new FormControl('', [Validators.pattern('[- +()0-9]+')]),
     birthday: new FormControl('', Validators.required),
-    about: new FormControl('', [Validators.required, Validators.minLength(20)]),
+    about: new FormControl('', [
+      Validators.required,
+      Validators.minLength(10),
+      Validators.maxLength(500),
+    ]),
     avatar: new FormControl('', Validators.required),
   });
 
+  /**
+   * Get controls of userForm
+   */
   get userFormControl() {
     return this.userForm.controls;
   }
 
-  public submitted = false;
-
-  // max value for datepicker in "YYYY-MM-DD" format
+  /**
+   * Max value for datepicker in "yyyy-MM-dd" format.
+   * Latest available date is today.
+   */
   public today = new Date().toISOString().substring(0, 10);
 
+  /**
+   * Marks if the form is submitted or not
+   */
+  public submitted = false;
+
+  /**
+   * Notifies the user if the file is too large
+   */
   public fileWarningMessage = '';
+
+  /**
+   * Describes the error message after submitting
+   */
+  public submitErrorMessage = '';
 
   constructor(
     public userService: UserService,
@@ -46,9 +80,15 @@ export class InformationFormComponent {
     });
   }
 
+  /**
+   * Converts uploaded image to string in base64 format.
+   * Maximal file size is 500kb.
+   * @param event Change event of file uploader
+   */
   public convertImageToBase64 = (event: Event): void => {
-    const file = (event.target as HTMLInputElement).files![0];
-    if (file) {
+    const files = (event.target as HTMLInputElement).files as FileList;
+    if (files && files[0]) {
+      const file = files[0];
       if ((file as Blob).size / 1024 > 500) {
         this.userForm.patchValue({
           avatar: '',
@@ -70,6 +110,9 @@ export class InformationFormComponent {
     }
   };
 
+  /**
+   * Resets the current avatar value on the form
+   */
   public removeImage = (): void => {
     this.userForm.patchValue({
       avatar: '',
@@ -77,16 +120,22 @@ export class InformationFormComponent {
     this.userForm.get('avatar')?.updateValueAndValidity();
   };
 
+  /**
+   * Submits a the form
+   */
   public onSubmit = () => {
     this.submitted = true;
     if (this.userForm.valid) {
-      this.userService
-        .setData(this.userForm.value)
-        .subscribe((response: ResponseStatus) => {
+      this.userService.setData(this.userForm.value).subscribe(
+        (response: ResponseStatus) => {
           if (response?.status === 'OK') {
             this.router.navigate(['/details']);
           }
-        });
+        },
+        (error: HttpErrorResponse) => {
+          this.submitErrorMessage = error.statusText;
+        }
+      );
     }
   };
 }
