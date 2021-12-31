@@ -92,7 +92,6 @@ E.g:
 - Localization
 - Integration tests
 - More links for the footer
-- More validation for the form items (length)
 - Minor UI fixes (hover effects, better sizing)
 - More manual testing
 
