@@ -54,7 +54,7 @@ Routing is solved by the default Angular routing module.
 
 ### IDE
 
-I used VSCode.
+I used VSCode (macOS).
 
 ### TESTING
 
@@ -88,7 +88,6 @@ E.g:
 
 - Accessibility features (for visually impared users)
 - Sources page to list the used free resources (images)
-- Commenting the code (now I added only a few lines where the code is not completely self describing)
 - Localization
 - Integration tests
 - More links for the footer

@@ -9,12 +9,18 @@ import {
 import { Router } from '@angular/router';
 import { ResponseStatus } from 'src/app/app.model';
 
+/**
+ * User settings page
+ */
 @Component({
   selector: 'app-user-settings',
   templateUrl: './user-settings.component.html',
   styleUrls: ['./user-settings.component.scss'],
 })
 export class UserSettingsComponent {
+  /**
+   * Reactive form for user information
+   */
   userForm = new FormGroup({
     firstName: new FormControl('', [
       Validators.required,
@@ -35,15 +41,27 @@ export class UserSettingsComponent {
     avatar: new FormControl('', Validators.required),
   });
 
+  /**
+   * Get controls of userForm
+   */
   get userFormControl() {
     return this.userForm.controls;
   }
 
-  public submitted = false;
-
-  // max value for datepicker in "YYYY-MM-DD" format
+  /**
+   * Max value for datepicker in "yyyy-MM-dd" format.
+   * Latest available date is today.
+   */
   public today = new Date().toISOString().substring(0, 10);
 
+  /**
+   * Marks if the form is submitted or not
+   */
+  public submitted = false;
+
+  /**
+   * Notifies the user if the file is too large
+   */
   public fileWarningMessage = '';
 
   constructor(
@@ -56,9 +74,15 @@ export class UserSettingsComponent {
     });
   }
 
+  /**
+   * Converts uploaded image to string in base64 format.
+   * Maximal file size is 500kb.
+   * @param event Change event of file uploader
+   */
   public convertImageToBase64 = (event: Event): void => {
-    const file = (event.target as HTMLInputElement).files![0];
-    if (file) {
+    const files = (event.target as HTMLInputElement).files as FileList;
+    if (files && files[0]) {
+      const file = files[0];
       if ((file as Blob).size / 1024 > 500) {
         this.userForm.patchValue({
           avatar: '',
@@ -80,6 +104,9 @@ export class UserSettingsComponent {
     }
   };
 
+  /**
+   * Resets the current avatar value on the form
+   */
   public removeImage = (): void => {
     this.userForm.patchValue({
       avatar: '',
@@ -87,6 +114,9 @@ export class UserSettingsComponent {
     this.userForm.get('avatar')?.updateValueAndValidity();
   };
 
+  /**
+   * Submits a the form
+   */
   public onSubmit = () => {
     this.submitted = true;
     if (this.userForm.valid) {

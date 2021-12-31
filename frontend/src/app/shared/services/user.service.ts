@@ -9,11 +9,20 @@ import {
 import { LocalStorageService } from './localStorage.service';
 import { RestService } from './rest.service';
 
+/**
+ * User data getter and setter with two different interfaces
+ */
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
+  /**
+   * The selected interface type: Rest or LocalStorage
+   */
   private selectedInterfaceType = InterfaceType.LocalStorage;
+  /**
+   * The selected interface
+   */
   private usedService: DataService;
 
   constructor(
@@ -28,11 +37,20 @@ export class UserService {
     }
   }
 
+  /**
+   * Adds current date and sets user data
+   * @param userData Information about the user
+   * @returns Status message
+   */
   public setData(userData: UserData): Observable<ResponseStatus> {
     userData.dateOfChange = new Date().toISOString();
     return this.usedService.setData(userData);
   }
 
+  /**
+   * Gets user data
+   * @returns user data
+   */
   public getData(): Observable<UserData> {
     return this.usedService.getData();
   }
