@@ -16,12 +16,22 @@ import { ResponseStatus } from 'src/app/app.model';
 })
 export class InformationFormComponent {
   userForm = new FormGroup({
-    firstName: new FormControl('', Validators.required),
-    lastName: new FormControl('', Validators.required),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    phone: new FormControl(''),
-    birthday: new FormControl('', Validators.required),
-    about: new FormControl('', [Validators.required, Validators.minLength(20)]),
+    firstName: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(50),
+    ]),
+    lastName: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(50),
+    ]),
+    email: new FormControl('', [Validators.email]),
+    phone: new FormControl('', [Validators.pattern('[- +()0-9]+')]),
+    birthday: new FormControl(null, Validators.required),
+    about: new FormControl('', [
+      Validators.required,
+      Validators.minLength(10),
+      Validators.maxLength(500),
+    ]),
     avatar: new FormControl('', Validators.required),
   });
 

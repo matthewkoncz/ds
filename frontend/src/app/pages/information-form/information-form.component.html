@@ -15,7 +15,10 @@
           userFormControl['firstName'].errors
         "
       >
-        Please add a first name.
+        <ng-component *ngIf="userFormControl['firstName'].errors['required']"> Last name is required</ng-component>
+        <ng-component *ngIf="userFormControl['firstName'].errors['maxlength']">
+          Last name must not exceed 50 characters
+        </ng-component>
       </span>
     </section>
     <section class="c-information-form__input-block">
@@ -28,7 +31,10 @@
           userFormControl['lastName'].errors
         "
       >
-        Please add a last name.
+        <div *ngIf="userFormControl['lastName'].errors['required']"> Last name is required</div>
+        <div *ngIf="userFormControl['lastName'].errors['maxlength']">
+          Last name must not exceed 50 characters
+        </div>
       </span>
     </section>
     <section class="c-information-form__input-block">
@@ -41,7 +47,7 @@
           userFormControl['email'].errors
         "
       >
-        Please add a valid email address.
+        A valid email address is required
       </span>
     </section>
     <section class="c-information-form__input-block">
@@ -63,7 +69,7 @@
           userFormControl['birthday'].errors
         "
       >
-        Please add a birthday.
+        Date of birth is required
       </span>
     </section>
     <section class="c-information-form__input-block">
@@ -76,7 +82,13 @@
           userFormControl['about'].errors
         "
       >
-        Please add a description (at least 20 characters).
+        <div *ngIf="userFormControl['about'].errors['required']"> About section is required</div>
+        <div *ngIf="userFormControl['about'].errors['minlength']">
+          About section must be at least 10 characters
+        </div>
+        <div *ngIf="userFormControl['about'].errors['maxlength']">
+          About section must not exceed 500 characters
+        </div>
       </span>
     </section>
     <section class="c-information-form__input-block">
@@ -95,7 +107,7 @@
           !fileWarningMessage
         "
       >
-        Please add an avatar.
+        Avatar is required
       </span>
       <span
         class="c-information-form__validation-error"
