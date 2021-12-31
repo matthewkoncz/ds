@@ -14,8 +14,9 @@
   &__img-container {
     text-align: center;
     img {
-      width: 10vh;
+      width: 14vh;
       min-width: 80px;
+      margin: 4vh;
     }
   }
   @media only screen and (max-width: 768px) {

@@ -35,7 +35,8 @@ describe('UserProfileComponent', () => {
   });
 
   it('should calculate the age from the date of birth', () => {
-    // @ts-ignore
-    expect(component.getAge('1993-01-25')).toBeGreaterThanOrEqual(28);
+    expect(component.getAgeByBirthDate('1993-01-25')).toBeGreaterThanOrEqual(
+      28
+    );
   });
 });

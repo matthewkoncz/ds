@@ -20,8 +20,10 @@
       border-radius: 50px;
     }
     .c-user-profile__name {
-      text-align: center;
+      width: 90%;
       margin-bottom: 0;
+      text-align: center;
+      word-wrap: break-word;
     }
   }
   .c-user-profile__user-info-block-container {
@@ -37,6 +39,7 @@
       padding: 20px;
       box-shadow: 0 6px 6px #0a101426, 0 0 52px #0a10141f;
       margin-bottom: 30px;
+      word-wrap: break-word;
     }
   }
   @media only screen and (max-width: 768px) {
@@ -50,7 +53,9 @@
     }
   }
 }
-.c-user-profile__no-data {
+.c-user-profile__no-data,
+.c-user-profile__loading,
+.c-user-profile__error-message {
   min-height: calc(100vh - 140px - 30vw);
   text-align: center;
   padding: 15vw;

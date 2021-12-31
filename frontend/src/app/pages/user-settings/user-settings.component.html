@@ -1,0 +1,154 @@
+<main class="c-user-settings">
+  <form
+    class="c-user-settings__container"
+    [formGroup]="userForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <h1 class="c-user-settings__title">User settings</h1>
+    <section class="c-user-settings__input-block">
+      <label for="first-name">First Name:<span> *</span></label>
+      <input id="first-name" type="text" formControlName="firstName" />
+      <span
+        class="c-user-settings__validation-error"
+        *ngIf="
+          (userFormControl['firstName'].touched || submitted) &&
+          userFormControl['firstName'].errors
+        "
+      >
+        <ng-container *ngIf="userFormControl['firstName'].errors['required']">
+          First name is required
+        </ng-container>
+        <ng-container *ngIf="userFormControl['firstName'].errors['maxlength']">
+          First name must not exceed 50 characters
+        </ng-container>
+      </span>
+    </section>
+    <section class="c-user-settings__input-block">
+      <label for="last-name">Last Name:<span> *</span></label>
+      <input id="last-name" type="text" formControlName="lastName" />
+      <span
+        class="c-user-settings__validation-error"
+        *ngIf="
+          (userFormControl['lastName'].touched || submitted) &&
+          userFormControl['lastName'].errors
+        "
+      >
+        <ng-container *ngIf="userFormControl['lastName'].errors['required']">
+          Last name is required
+        </ng-container>
+        <ng-container *ngIf="userFormControl['lastName'].errors['maxlength']">
+          Last name must not exceed 50 characters
+        </ng-container>
+      </span>
+    </section>
+    <section class="c-user-settings__input-block">
+      <label for="email">Email:<span> *</span></label>
+      <input id="email" type="email" formControlName="email" />
+      <span
+        class="c-user-settings__validation-error"
+        *ngIf="
+          (userFormControl['email'].touched || submitted) &&
+          userFormControl['email'].errors
+        "
+      >
+        A valid email address is required
+      </span>
+    </section>
+    <section class="c-user-settings__input-block">
+      <label for="phone">Phone</label>
+      <input id="phone" type="text" formControlName="phone" />
+      <span
+        class="c-user-settings__validation-error"
+        *ngIf="
+          (userFormControl['phone'].touched || submitted) &&
+          userFormControl['phone'].errors
+        "
+      >
+        Only valid phone numbers can be used (please use only numbers and plus
+        sign)
+      </span>
+    </section>
+    <section class="c-user-settings__input-block">
+      <label for="birthday">Date of birth:<span> *</span></label>
+      <input
+        id="birthday"
+        type="date"
+        formControlName="birthday"
+        [max]="today"
+      />
+      <span
+        class="c-user-settings__validation-error"
+        *ngIf="
+          (userFormControl['birthday'].touched || submitted) &&
+          userFormControl['birthday'].errors
+        "
+      >
+        Date of birth is required
+      </span>
+    </section>
+    <section class="c-user-settings__input-block">
+      <label for="about">About:<span> *</span></label>
+      <textarea id="about" formControlName="about" rows="5"></textarea>
+      <span
+        class="c-user-settings__validation-error"
+        *ngIf="
+          (userFormControl['about'].touched || submitted) &&
+          userFormControl['about'].errors
+        "
+      >
+        <ng-container *ngIf="userFormControl['about'].errors['required']">
+          About section is required
+        </ng-container>
+        <ng-container *ngIf="userFormControl['about'].errors['minlength']">
+          About section must be at least 10 characters
+        </ng-container>
+        <ng-container *ngIf="userFormControl['about'].errors['maxlength']">
+          About section must not exceed 500 characters
+        </ng-container>
+      </span>
+    </section>
+    <section class="c-user-settings__input-block">
+      <label for="about">Avatar:<span> *</span></label>
+      <input
+        type="file"
+        accept="image/*"
+        maxFileSize="1"
+        (change)="convertImageToBase64($event)"
+      />
+      <span
+        class="c-user-settings__validation-error"
+        *ngIf="
+          (userFormControl['avatar'].touched || submitted) &&
+          userFormControl['avatar'].errors &&
+          !fileWarningMessage
+        "
+      >
+        Avatar is required
+      </span>
+      <span
+        class="c-user-settings__validation-error"
+        *ngIf="fileWarningMessage"
+      >
+        {{ fileWarningMessage }}
+      </span>
+    </section>
+    <section
+      class="c-user-settings__input-block c-user-settings__input-block--left"
+    >
+      <div *ngIf="this.userForm.get('avatar')?.value">
+        <img [src]="this.userForm.get('avatar')?.value" alt="preview" />
+        <p class="c-user-settings__remove-button" (click)="removeImage()">
+          Remove
+        </p>
+      </div>
+    </section>
+    <section class="c-user-settings__input-block">
+      <button class="c-user-settings__submit-button" type="submit">
+        SUBMIT
+      </button>
+      <p class="c-user-settings__validation-error" *ngIf="submitErrorMessage">
+        {{ submitErrorMessage }}
+      </p>
+    </section>
+  </form>
+</main>
