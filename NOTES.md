@@ -8,7 +8,7 @@ The interviewers want to see:
 - my experience with a frontend framework
 - my coding skills
 - my coding style
-- my experience with responsibility
+- my experience with responsiveness
 - my styling skills without using a UI component library
 - my ability to work independently
 - my ideas for the not specified parts of the task
