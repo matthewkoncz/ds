@@ -21,15 +21,15 @@ The interviewers want to see:
 ### Frontend framework
 
 Using one of the popular frontend frameworks/libraries makes our work faster at creating a single page application.
-I selected Angular for a frontend framework. I have experience with Angular, React and a very little with Vue.js, but in the last one year I used Angular, therefore I decided to use this one for my project.
+I selected Angular for frontend framework. I have experience with Angular, React and a very little with Vue.js, but in the last year I used Angular, therefore I decided to use this one in my project.
 
 ### Programming language
 
-Angular supports ES5, ES6, Dart and TypeScript. I like TypeScript over JavaScript because it provides a safer and cleaner coding environment. Also the most documentation and support is available for this language, therefore I chose TS.
+Angular supports ES5, ES6, Dart and TypeScript. I like using TypeScript over JavaScript in case of an Angular application because it provides a safer and cleaner coding environment. Also the most documentation and community support is available for this language. Therefore I chose TS.
 
 ### Styling
 
-The only CSS preprocessor I know is SASS. I used this technology because of its advantages like :
+The only CSS preprocessor I have used is SASS. I use this technology because of its advantages like:
 
 - cleaner code
 - quicker coding
@@ -38,11 +38,11 @@ The only CSS preprocessor I know is SASS. I used this technology because of its 
 
 ### Version control
 
-I used GIT for version control because it is free and I know this technology the most. I published the project on GitHub because of the same reasons.
+I used GIT for version control because it is free and I know this technology the best. I published the project on GitHub because of the same reasons.
 
 ### Hosting
 
-GitHub provides GitHub Pages which can be used for free hosting. I already owned a domain name (koncz.dev), so I used this that for the project.
+GitHub provides GitHub Pages which can be used for free hosting. I already owned a domain name (koncz.dev), so I used that for the project.
 
 ### Session persistent storage
 
@@ -62,7 +62,7 @@ I wrote some unit tests but the code is not totally covered. I used the default 
 
 ## What were the challenging parts
 
-The UI design is not my best talent, but I would like to improve on that area as well.
+The UI design is not my best talent, but I would like to develop in this area as well.
 
 ## What I learned
 
@@ -94,6 +94,6 @@ E.g:
 
 ## Feedback
 
-It was an interesting task and it highlighed some technologies/techniques for me that I could improve.
+It was an interesting task and it highlighed some technologies/techniques for me that I could improve at.
 
 Thank you for giving me a chance and reviewing my work. Please give me a feedback, it can be very useful for my future improvement. :)
